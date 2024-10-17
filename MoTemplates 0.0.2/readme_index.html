@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoTemplates</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            background: #1e1e1e; /* Background color */
+            color: white; /* Text color */
+        }
+
+        /* Sidebar Container */
+        .sidebar {
+            width: 250px; /* Width of sidebar */
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: -250px; /* Hide by default */
+            transition: left 0.3s ease;
+            z-index: 1000;
+            border-radius: 10px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0d47a1, #000000); /* Dark blue and black gradient */
+        }
+
+        /* Sidebar Open */
+        .sidebar.open {
+            left: 0; /* Show when open */
+        }
+
+        /* Sidebar Header */
+        .sidebar-header {
+            padding: 20px;
+            text-align: center;
+            font-size: 1.8em;
+            color: #ffffff; /* Header text color */
+        }
+
+        /* Sidebar Links */
+        .sidebar a {
+            display: block;
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        /* Hover Effects */
+        .sidebar a:hover {
+            background: rgba(255, 255, 255, 0.1); /* Light background on hover */
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 270px; /* Space for sidebar */
+            padding: 20px;
+            flex-grow: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Hide content by default */
+        .page {
+            display: none;
+        }
+
+        /* Show the active page */
+        .page.active {
+            display: block;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 200px; /* Smaller width on mobile */
+            }
+            .main-content {
+                margin-left: 220px; /* Adjust main content margin */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar open">
+        <div class="sidebar-header"><b><i>MoTemplates</i></b></div>
+        <a href="#" onclick="showPage('home')">Home</a>
+        <a href="#" onclick="showPage('about')">About</a>
+    </div>
+
+    <div class="main-content">
+        <div id="home" class="page active">
+            <h1>Welcome to MoTemplates</h1>
+            <p>Your one-stop solution for awesome CSS and JS templates.</p>
+            <p>Explore our variety of templates designed to help you kickstart your projects.</p>
+            <p>Stay tuned for more updates and features!</p>
+        </div>
+
+        <div id="about" class="page">
+            <h1>About MoTemplates</h1>
+            <p>MoTemplates offers a wide range of templates for various purposes.</p>
+            <p>We strive to provide high-quality, easy-to-use templates that suit your needs.</p>
+            <p>Our goal is to help developers and designers create stunning websites quickly and efficiently.</p>
+            <p>To use this, open your code editor. Create a HTML file. Drop the CSS or JS file you need to the folder of your HTML code and connect HTML file with this using the link code. The styles or script will run on the HTML file. You are using 0.0.2, where JS files are not there. So, wait until a new update with this feature or download any version supports JS.</p>
+            <p><i>Version : <b>0.0.2</b></i></p>
+            <p><i>Updates : <b>Cannot be viewed here. Checkout GitHub or a platform where MoTemplates is available.</b></i></p>
+        </div>
+    </div>
+
+    <script>
+        // Function to switch between pages
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Show the selected page
+            const activePage = document.getElementById(pageId);
+            activePage.classList.add('active');
+        }
+    </script>
+</body>
+</html>
